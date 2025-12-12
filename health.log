@@ -1,0 +1,30 @@
+------------System HEALTH REPORT-----------------
+Date: Friday 12 December 2025 09:01:04 PM IST
+
+1. CPU USAGE:
+CPU Load: 1.4%
+
+2. RAM(Memory) Usage:
+               total        used        free      shared  buff/cache   available
+Mem:           11733        1731        3326         229        6674        9455
+Swap:          22887           0       22887
+
+3. Disk Usage:
+/dev/sda6       126G  103G   17G  86% /
+tmpfs           5.8G   24M  5.8G   1% /dev/shm
+/dev/sda5       1.8G  211M  1.5G  13% /boot
+/dev/sda3        91M   33M   59M  36% /boot/efi
+
+4. Top 5 processes:
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+shaheen    60928  5.6  2.0 1478251128 244508 ?   Sl   19:56   3:39 /opt/google/chrome/chrome --type=renderer --crashpad-handler-pid=60019 --enable-crash-reporter=317d6964-f109-478f-bfcb-276dd5748701, --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --change-stack-guard-on-fork=enable --ozone-platform=wayland --lang=en-GB --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=28 --time-ticks-at-unix-epoch=-1765544437955174 --launch-time-ticks=5145867572 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,8641725729610844900,3283576953228841501,2097152 --field-trial-handle=3,i,7336079547808742503,4598509086501114942,262144 --disable-features=EyeDropper --variations-seed-version=20251211-170052.342000
+shaheen     1886  3.5  2.3 4960916 283420 ?      Ssl  18:32   5:15 /usr/bin/gnome-shell
+shaheen    61380  3.3  2.2 1478275620 276116 ?   Sl   20:36   0:49 /opt/google/chrome/chrome --type=renderer --crashpad-handler-pid=60019 --enable-crash-reporter=317d6964-f109-478f-bfcb-276dd5748701, --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --change-stack-guard-on-fork=enable --ozone-platform=wayland --lang=en-GB --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=50 --time-ticks-at-unix-epoch=-1765544437955174 --launch-time-ticks=7542780402 --shared-files=v8_context_snapshot_data:100 --metrics-shmem-handle=4,i,18168024401340537195,10869891340543134391,2097152 --field-trial-handle=3,i,7336079547808742503,4598509086501114942,262144 --disable-features=EyeDropper --variations-seed-version=20251211-170052.342000
+shaheen    60010  1.9  2.8 34425728 338380 ?     SLl  19:08   2:10 /opt/google/chrome/chrome
+shaheen    60063  1.6  1.8 34300848 217408 ?     Sl   19:08   1:53 /opt/google/chrome/chrome --type=gpu-process --ozone-platform=wayland --render-node-override=/dev/dri/renderD128 --crashpad-handler-pid=60019 --enable-crash-reporter=317d6964-f109-478f-bfcb-276dd5748701, --change-stack-guard-on-fork=enable --gpu-preferences=UAAAAAAAAAAgAAAIAAAAAAAAAAAAAGAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAABgAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAA --shared-files --metrics-shmem-handle=4,i,4470867646836635835,16994145576488237928,262144 --field-trial-handle=3,i,7336079547808742503,4598509086501114942,262144 --disable-features=EyeDropper --variations-seed-version=20251211-170052.342000
+
+5. System Uptime:
+up 2 hours, 30 minutes
+
+----------------------------------------------
+
