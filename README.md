@@ -63,7 +63,7 @@ Shell
 
 Absolute vs relative path
 
-Exit status
+Exit status ( echo $?)
 
 kill vs kill -9
 
