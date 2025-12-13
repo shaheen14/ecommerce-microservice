@@ -89,3 +89,25 @@ GET /sales
 ### Build Image
 ```bash
 docker build -t ecommerce-microservice:1.0 .
+```
+
+### Run Container
+```bash
+docker run -p 8000:8000 -e APP_PORT=8000 ecommerce-microservice:1.0
+```
+
+### Docker Hub Image
+```bash
+docker pull shaheen14/ecommerce-microservice:1.0
+```
+
+### Environment Variables
+```bash
+APP_PORT – Application port (default: 8000)
+```
+**Notes**
+
+ Uses Python 3.11 base image
+
+.dockerignore added to reduce image size
+
