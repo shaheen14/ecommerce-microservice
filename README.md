@@ -105,6 +105,10 @@ docker pull shaheen14/ecommerce-microservice:1.0
 ```bash
 APP_PORT – Application port (default: 8000)
 ```
+**Access API**
+
+http://localhost:8000/sales
+
 **Notes**
 
  Uses Python 3.11 base image
