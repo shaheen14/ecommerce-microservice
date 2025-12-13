@@ -76,3 +76,16 @@ How to use Git for version control
 How to write practical bash scripts
 
 How to organize DevOps project repository
+
+
+## Day 2 – Docker (Containerization)
+
+### Service
+Ecommerce Microservice API (Flask)
+
+### Endpoint
+GET /sales
+
+### Build Image
+```bash
+docker build -t ecommerce-microservice:1.0 .
