@@ -2,80 +2,80 @@
 
 This repository is part of a 7-Day DevOps Master Project, where I build a complete microservice + CI/CD + Monitoring + Logging + Kubernetes deployment.
 
-🚀 Today's Objectives
+**🚀 Today's Objectives**
 
-Learn Linux basics required for a DevOps Engineer
++ Learn Linux basics required for a DevOps Engineer
 
-Learn essential Git commands
++ Learn essential Git commands
 
-Automate system setup using bash scripting
++ Automate system setup using bash scripting
 
-Push changes to GitHub as part of real project workflow
++ Push changes to GitHub as part of real project workflow
 
 
 📂 **Work Completed Today**
 
-1️⃣ **Project Initialization
+1️⃣ Project Initialization
 
-Created project folder: ecommerce-microservice/
++ Created project folder: ecommerce-microservice/
 
-Initialized a Git repository using:
++ Initialized a Git repository using:
 
-git init
++ git init
 
 2️⃣ Created Automation Scripts
 
-✔ setup.sh
++ ✔ setup.sh
 
-Installs commonly used DevOps tools (Docker, kubectl, MySQL client).
++ Installs commonly used DevOps tools (Docker, kubectl, MySQL client).
 
-✔ check_port.sh
++ ✔ check_port.sh
 
-Checks whether a specific port is already in use.
++ Checks whether a specific port is already in use.
 
-Run example:
-
++ Run example:
+```bash
 ./check_port.sh 8080
-
+```
 3️⃣ Git Operations
 
-Added files to staging:
++ Added files to staging:
 
-git add .
++ git add .
 
 
-Committed changes:
-
++ Committed changes:
+```bash
 git commit -m "Day 1: Linux + Git setup completed"
+```
 
-
-Connected to GitHub and pushed the code.
++ Connected to GitHub and pushed the code.
 
 📝 **Assignments Completed Today**
 
-Wrote a system health script (system_health.sh)
+- Wrote a system health script (system_health.sh)
 
-Created a new Git branch and a Pull Request
+- Created a new Git branch and a Pull Request
 
-Wrote explanations for Linux basics:
+- Wrote explanations for Linux basics:
 
-Shell
+    + Shell
 
-Absolute vs relative path
+    + Absolute vs relative path
 
-Exit status ( echo $?)
+    + Exit status ( echo $?)
 
-kill vs kill -9
+    + kill vs kill -9
 
 📚 **Key Learning From Day 1**
 
-How Linux handles files, processes, permissions
++ How Linux handles files, processes, permissions
 
-How to use Git for version control
++ How to use Git for version control
 
-How to write practical bash scripts
++ How to write practical bash scripts
 
-How to organize DevOps project repository
++ How to organize DevOps project repository
 
 
 ## Day 2 – Docker (Containerization)
@@ -111,7 +111,27 @@ http://localhost:8000/sales
 
 **Notes**
 
- Uses Python 3.11 base image
+* Uses Python 3.11 base image
 
-.dockerignore added to reduce image size
+* .dockerignore added to reduce image size
+
+## Day 3 – SQL + Docker Compose
+
+### Run with Docker Compose
+```bash
+docker-compose up --build
+```
+**Services**
+
+* Flask API
+
+* PostgreSQL database
+
+**Endpoint**
+
+GET /sales
+
+**Persistence**
+
+PostgreSQL data stored using Docker volumes
 
