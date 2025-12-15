@@ -135,3 +135,108 @@ GET /sales
 
 PostgreSQL data stored using Docker volumes
 
+
+**✅ Day 4 – Kubernetes (Deployment & Scaling)**
+
+**🎯** Objective****
+
+ Deploy the ecommerce microservice with PostgreSQL on Kubernetes using Minikube, and demonstrate scaling and load balancing.
+
+🔧** Tools Used**
+
+* Kubernetes (Minikube)
+
+* kubectl
+
+* Docker
+
+* PostgreSQL
+
+* ConfigMap
+
+**🏗️ Kubernetes Components**
+
+* Deployment
+
+  * ecommerce-api (Flask application)
+
+  * postgres (PostgreSQL database)
+
+* Service
+
+  * ecommerce-api → NodePort
+
+  * postgres → ClusterIP
+
+* ConfigMap
+
+   * Application configuration
+
+   * PostgreSQL environment variables (learning purpose)
+
+🚀 **Deployment Steps**
+```bash
+kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/postgres-deployment.yaml
+kubectl apply -f k8s/postgres-service.yaml
+kubectl apply -f k8s/api-deployment.yaml
+kubectl apply -f k8s/ap-service.yaml
+```
+
+**Verify:**
+```bash
+kubectl get pods
+kubectl get svc
+```
+
+🌐 **Accessing the Application**
+
+minikube service ecommerce-api
+
+
+**Open in browser:**
+
+  /sales  
+
+**🔁 Scaling Assignment**
+
+
+* Scale application from 1 to 3 replicas:
+```bash
+kubectl scale deployment ecommerce-api --replicas=3
+kubectl get pods
+```
+
+* Scale down:
+```bash
+kubectl scale deployment ecommerce-api --replicas=1
+```
+
+✔ **Verified that Kubernetes Service load-balances traffic across replicas**.
+
+**🐞 Debugging (CrashLoopBackOff)**
+
+* PostgreSQL pod initially failed due to missing required environment variables
+
+* PostgreSQL requires POSTGRES_* variables at startup
+
+* Issue resolved by correcting ConfigMap variable names
+
+**🧠 Key Learnings**
+
+* Difference between stateless (API) and stateful (DB) workloads
+
+* How Kubernetes handles scaling and self-healing
+
+* Importance of correct environment variable naming per container image
+
+* Role of Deployments, Services, and ConfigMaps
+
+**📌 Notes**
+
+* ConfigMaps were used for credentials for learning purposes
+
+* In production, Kubernetes Secrets should be used for sensitive data.
+
+
+
