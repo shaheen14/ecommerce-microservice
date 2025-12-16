@@ -239,4 +239,9 @@ kubectl scale deployment ecommerce-api --replicas=1
 * In production, Kubernetes Secrets should be used for sensitive data.
 
 
+## Day 5 – Monitoring (Grafana)
+
+- Installed Prometheus and Grafana on Kubernetes
+- Configured Prometheus as Grafana data source
+- Visualized pod and node metrics using Grafana dashboards
 
