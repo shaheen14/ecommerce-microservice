@@ -1,4 +1,4 @@
-📘 Day 1 – Linux & Git Setup (DevOps 7-Day Project)
+### 📘 Day 1 – Linux & Git Setup (DevOps 7-Day Project)
 
 This repository is part of a 7-Day DevOps Master Project, where I build a complete microservice + CI/CD + Monitoring + Logging + Kubernetes deployment.
 
@@ -246,28 +246,35 @@ kubectl scale deployment ecommerce-api --replicas=1
 - Visualized pod and node metrics using Grafana dashboards
 
 
+```bash
+kubectl apply -f monitoring/
+```
+**Port forwarding**
+```bash
+kubectl port-forward svc/prometheus 9090:9090
+```
 
+## 📅 Day 6 – Centralized Logging
 
-
-📅 Day 6 – Centralized Logging
-ELK Stack (Elasticsearch + Kibana)
+**ELK Stack (Elasticsearch + Kibana)**
 
 Project: ecommerce-microservice
 
-🎯 Day 6 Objective
+**🎯 Day 6 Objective**
 
 The goal of Day 6 was to:
 
-Implement centralized logging for the ecommerce-microservice
+* Implement centralized logging for the ecommerce-microservice
 
-Deploy and understand the ELK stack in Kubernetes
+* Deploy and understand the ELK stack in Kubernetes
 
-Visualize application logs using Kibana
+* Visualize application logs using Kibana
 
-Keep the setup aligned with real-world DevOps practices
+* Keep the setup aligned with real-world DevOps practices
 
 
-🧱 Architecture Overview
+**🧱 Architecture Overview**
+
 ecommerce-api (Kubernetes Pod)
         |
         |  stdout / stderr logs
@@ -280,72 +287,76 @@ Kibana (Log Search & Visualization)
 🔹 ELK Stack Components
 1️⃣ Elasticsearch
 
-Stores and indexes logs
+* Stores and indexes logs
 
-Runs inside Kubernetes
-
-
+* Runs inside Kubernetes
+  
+```bash
+kubectl apply -f elk/
+```
 Verify:
 
+```bash 
 kubectl get pods -n logging
+```
 
 2️⃣ Kibana
 
-UI for searching and visualizing logs
+* UI for searching and visualizing logs
 
-Connected to Elasticsearch service
+* Connected to Elasticsearch service
 
 Access Kibana:
-
+```bash
 kubectl port-forward -n logging svc/kibana 5601:5601
+```
 
-
-Open in browser:
-
+**Open in browser:**
+```bash
 http://localhost:5601
-
-🔹 Namespace Used
-
+```
+🔹 **Namespace Used**
+```bash
 kubectl create namespace logging
-
+```
 
 All ELK components run inside the logging namespace.
 
 🔹 Log Collection Strategy
 
-Kubernetes container logs (stdout / stderr)
+* Kubernetes container logs (stdout / stderr)
 
-Logs produced by ecommerce-api pods
+* Logs produced by ecommerce-api pods
 
-Indexed directly by Elasticsearch
+* Indexed directly by Elasticsearch
 
-No Logstash used to keep setup lightweight
+* No Logstash used to keep setup lightweight
 
 This approach is common in Kubernetes environments where log collectors or agents are used instead of Logstash.
 
 
-🛠️ Issues Faced & Fixes
-Issue	                         Fix
-Disk space full	                Moved Docker & Minikube data to new disk
-Kibana stuck loading	        Waited for ES to reach healthy state
-High resource usage	        Restarted Minikube with sufficient memory
+🛠️** Issues Faced & Fixes**
 
-
-✅ Day 6 Outcome
+| Issue                      | Fix                                       |
+| -------------------------- | ----------------------------------------- |
+|                            |                                           |
+| Disk space full            | Moved Docker & Minikube data to new disk  |
+| Kibana stuck loading       | Waited for ES to reach healthy state      |
+| High resource usage        | Restarted Minikube with sufficient memory |
 
 ✔ ELK stack deployed successfully
 ✔ Centralized logging enabled
 ✔ Integrated with ecommerce-microservice
 ✔ Kubernetes-native logging understood
 
-🧠 Key Learnings
+🧠** Key Learnings**
 
-ELK stack is resource-heavy and needs tuning
+* ELK stack is resource-heavy and needs tuning
 
-Elasticsearch must be healthy before Kibana starts
+* Elasticsearch must be healthy before Kibana starts
 
-Centralized logging is critical for debugging microservices
+* Centralized logging is critical for debugging microservices
 
-Kubernetes logs are best handled centrally, not per container
+* Kubernetes logs are best handled centrally, not per container
 
-Logstash is optional depending on architecture
+* Logstash is optional depending on architecture
