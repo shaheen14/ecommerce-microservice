@@ -245,3 +245,107 @@ kubectl scale deployment ecommerce-api --replicas=1
 - Configured Prometheus as Grafana data source
 - Visualized pod and node metrics using Grafana dashboards
 
+
+
+
+
+📅 Day 6 – Centralized Logging
+ELK Stack (Elasticsearch + Kibana)
+
+Project: ecommerce-microservice
+
+🎯 Day 6 Objective
+
+The goal of Day 6 was to:
+
+Implement centralized logging for the ecommerce-microservice
+
+Deploy and understand the ELK stack in Kubernetes
+
+Visualize application logs using Kibana
+
+Keep the setup aligned with real-world DevOps practices
+
+
+🧱 Architecture Overview
+ecommerce-api (Kubernetes Pod)
+        |
+        |  stdout / stderr logs
+        v
+Elasticsearch
+        |
+        v
+Kibana (Log Search & Visualization)
+
+🔹 ELK Stack Components
+1️⃣ Elasticsearch
+
+Stores and indexes logs
+
+Runs inside Kubernetes
+
+
+Verify:
+
+kubectl get pods -n logging
+
+2️⃣ Kibana
+
+UI for searching and visualizing logs
+
+Connected to Elasticsearch service
+
+Access Kibana:
+
+kubectl port-forward -n logging svc/kibana 5601:5601
+
+
+Open in browser:
+
+http://localhost:5601
+
+🔹 Namespace Used
+
+kubectl create namespace logging
+
+
+All ELK components run inside the logging namespace.
+
+🔹 Log Collection Strategy
+
+Kubernetes container logs (stdout / stderr)
+
+Logs produced by ecommerce-api pods
+
+Indexed directly by Elasticsearch
+
+No Logstash used to keep setup lightweight
+
+This approach is common in Kubernetes environments where log collectors or agents are used instead of Logstash.
+
+
+🛠️ Issues Faced & Fixes
+Issue	                         Fix
+Disk space full	                Moved Docker & Minikube data to new disk
+Kibana stuck loading	        Waited for ES to reach healthy state
+High resource usage	        Restarted Minikube with sufficient memory
+
+
+✅ Day 6 Outcome
+
+✔ ELK stack deployed successfully
+✔ Centralized logging enabled
+✔ Integrated with ecommerce-microservice
+✔ Kubernetes-native logging understood
+
+🧠 Key Learnings
+
+ELK stack is resource-heavy and needs tuning
+
+Elasticsearch must be healthy before Kibana starts
+
+Centralized logging is critical for debugging microservices
+
+Kubernetes logs are best handled centrally, not per container
+
+Logstash is optional depending on architecture
