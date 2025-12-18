@@ -359,4 +359,162 @@ This approach is common in Kubernetes environments where log collectors or agent
 
 * Kubernetes logs are best handled centrally, not per container
 
-* Logstash is optional depending on architecture
+* Logstash is optional depending on architecture# Day 7 – CI/CD + Revision + Mock Interview
+
+### Day 7 – CI/CD
+
+Day 7 focuses on **CI/CD fundamentals** using **GitHub Actions**. The goal is to automate **build & image delivery**, not direct cluster deployment.
+
+---
+
+## 🎯 Objectives of Day 7
+
+* Understand CI vs CD clearly
+* Implement a real GitHub Actions pipeline
+* Build & push Docker images automatically
+* Avoid unsafe deployment to local Minikube from cloud runners
+
+---
+
+## 🧠 CI/CD Strategy Used (Important)
+
+### ❌ What we did NOT do
+
+* No direct deployment to Minikube from GitHub Actions
+* No kubeconfig or Minikube certificates in CI
+
+> Reason: Minikube is a **local cluster** and GitHub runners are **remote cloud VMs**.
+
+### ✅ What we implemented
+
+| Stage          | Tool               |
+| -------------- | ------------------ |
+| Source Control | GitHub             |
+| CI Pipeline    | GitHub Actions     |
+| Image Build    | Docker             |
+| Image Registry | Docker Hub         |
+| CD (Local)     | kubectl + Minikube |
+
+---
+
+## 🔁 CI Pipeline Flow
+
+1. Developer pushes code to `main` branch
+2. GitHub Actions triggers automatically
+3. Pipeline performs:
+
+   * Code checkout
+   * Docker Hub authentication
+   * Docker image build
+   * Docker image push
+4. Pipeline completes successfully
+5. Deployment is handled manually on Minikube
+
+---
+
+## ⚙️ GitHub Actions Workflow Used
+
+```yaml
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker image
+      run: |
+        docker build -t shaheen/ecommerce-microservice:latest .
+
+    - name: Push Docker image
+      run: |
+        docker push shaheen/ecommerce-microservice:latest
+```
+
+---
+
+## 🚀 Deployment (Local CD)
+
+After pipeline success:
+
+```bash
+minikube start
+kubectl apply -f k8s/
+``
+---
+
+## 🧪 Verification
+
+```bash
+kubectl get pods
+kubectl get svc
+
+```
+
+Ensure:
+
+* Pods are running
+* Image is pulled from Docker Hub
+* Application is accessible
+
+
+<img width="1277" height="621" alt="Screenshot from 2025-12-19 01-48-54" src="https://github.com/user-attachments/assets/771538d2-416a-4a1f-bdf7-af94e0f0e3f2" />
+
+<img width="1277" height="621" alt="Screenshot from 2025-12-19 01-50-26" src="https://github.com/user-attachments/assets/3000add2-487b-4fee-a0dd-b4102af98fad" />
+
+<img width="1277" height="621" alt="Screenshot from 2025-12-19 01-50-50" src="https://github.com/user-attachments/assets/423dc044-20b3-4117-986e-792758f0e9cb" />
+<img width="1165" height="707" alt="Screenshot from 2025-12-19 01-58-40" src="https://github.com/user-attachments/assets/d2f69908-7dbc-4856-bbdf-07835431b652" />
+
+
+
+
+---
+
+## 💡 Points to Considered (Very Important)
+
+* GitHub Actions is used only for **CI**
+* Docker images are versioned and pushed automatically
+* Minikube is not exposed to the internet
+* Deployment is decoupled from CI for safety
+* This approach mirrors real-world learning environments
+
+---
+
+## 🔁 Complete Project Timeline Recap
+
+| Day   | Topic                |
+| ----- | -------------------- |
+| Day 1 | Linux + Git          |
+| Day 2 | Docker               |
+| Day 3 | SQL                  |
+| Day 4 | Kubernetes           |
+| Day 5 | Prometheus + Grafana |
+| Day 6 | ELK Stack            |
+| Day 7 | CI/CD + Revision     |
+
+---
+
+## ✅ Day 7 Status
+
+✔ CI pipeline working without errors
+✔ Docker images pushed automatically
+✔ Manual CD to Minikube successful
+
+---
+
+## 🎉 Final Note
+
+This project demonstrates **end-to-end DevOps fundamentals** using a single evolving microservice.
