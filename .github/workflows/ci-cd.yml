@@ -28,6 +28,3 @@ jobs:
         run: |
           mkdir -p ~/.kube
           echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f k8s/        
