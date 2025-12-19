@@ -272,33 +272,37 @@ The goal of Day 6 was to:
 
 * Keep the setup aligned with real-world DevOps practices
 
+        
+     **   **🧱 Architecture Overview****
 
-**🧱 Architecture Overview**
+        
+        ecommerce-api (Kubernetes Pod)
+                |
+                |  stdout / stderr logs
+                v
+        Elasticsearch
+                |
+                v
+        Kibana (Log Search & Visualization)
+  
+        
 
-ecommerce-api (Kubernetes Pod)
-        |
-        |  stdout / stderr logs
-        v
-Elasticsearch
-        |
-        v
-Kibana (Log Search & Visualization)
+**🔹 ELK Stack Components**
 
-🔹 ELK Stack Components
 1️⃣ Elasticsearch
 
 * Stores and indexes logs
 
 * Runs inside Kubernetes
   
-```bash
-kubectl apply -f elk/
-```
-Verify:
-
-```bash 
-kubectl get pods -n logging
-```
+    ```bash
+    kubectl apply -f elk/
+    ```
+    Verify:
+    
+    ```bash 
+    kubectl get pods -n logging
+    ```
 
 2️⃣ Kibana
 
@@ -322,7 +326,7 @@ kubectl create namespace logging
 
 All ELK components run inside the logging namespace.
 
-🔹 Log Collection Strategy
+**🔹 Log Collection Strategy**
 
 * Kubernetes container logs (stdout / stderr)
 
