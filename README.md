@@ -1,3 +1,8 @@
+## 7-Day DevOps Challenge – Full Lifecycle
+📍 Demonstrated practical DevOps workflow from Linux automation to CI/CD deployment.
+✅ Tools: Docker, Kubernetes, Prometheus, Grafana, ELK, GitHub Actions
+📍 Highlights: Automated builds, container orchestration, monitoring & logging
+
 ### 📘 Day 1 – Linux & Git Setup (DevOps 7-Day Project)
 
 This repository is part of a 7-Day DevOps Master Project, where I build a complete microservice + CI/CD + Monitoring + Logging + Kubernetes deployment.
